@@ -2,6 +2,17 @@
 
 A polished, full‑stack Task Manager with CRUD operations, built using Node.js, Express, MongoDB, and a responsive vanilla frontend.
 
+## Live Demo
+https://trackgrid-production.up.railway.app/
+
+## Screenshot
+![Task Manager Screenshot](assets/screenshot.png)
+
+## Project Highlights
+- Full CRUD workflow with clean REST API design
+- Responsive UI with filters, search, and live stats
+- Deployed on Railway with MongoDB Atlas
+
 ## Features
 - Create, read, update, delete tasks
 - Task fields: title, description, status
