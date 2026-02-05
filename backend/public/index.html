@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <main class="container">
+      <header class="header">
+        <div class="brand">
+          <span class="brand__dot"></span>
+          <div>
+            <h1>Task Manager</h1>
+            <p class="subtitle">Simple, fast, and built for focus.</p>
+          </div>
+        </div>
+        <div class="header__stats">
+          <div class="stat">
+            <span class="stat__label">Total</span>
+            <span id="stat-total" class="stat__value">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">In Progress</span>
+            <span id="stat-progress" class="stat__value">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Completed</span>
+            <span id="stat-completed" class="stat__value">0</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Add Task</h2>
+          <form id="task-form" class="form">
+            <label>
+              Title
+              <input type="text" id="title" placeholder="Enter task title" required />
+            </label>
+            <label>
+              Description
+              <textarea id="description" rows="4" placeholder="Optional notes"></textarea>
+            </label>
+            <label>
+              Status
+              <select id="status">
+                <option value="pending">Pending</option>
+                <option value="in_progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </label>
+            <button type="submit" class="btn">Create Task</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="list-header">
+            <div>
+              <h2>Tasks</h2>
+              <p class="muted">Filter, search, and update in one place.</p>
+            </div>
+            <button id="refresh" class="btn btn--ghost">Refresh</button>
+          </div>
+
+          <div class="toolbar">
+            <div class="filters">
+              <button class="chip active" data-filter="all">All</button>
+              <button class="chip" data-filter="pending">Pending</button>
+              <button class="chip" data-filter="in_progress">In Progress</button>
+              <button class="chip" data-filter="completed">Completed</button>
+            </div>
+            <div class="search">
+              <input type="text" id="search" placeholder="Search tasks" />
+            </div>
+          </div>
+
+          <ul id="task-list" class="task-list"></ul>
+          <p id="empty" class="empty">No tasks yet. Add your first one.</p>
+        </div>
+      </section>
+    </main>
+
+    <div id="edit-modal" class="modal hidden">
+      <div class="modal__card">
+        <div class="modal__header">
+          <h3>Edit Task</h3>
+          <button id="close-modal" class="icon-btn">×</button>
+        </div>
+        <form id="edit-form" class="form">
+          <label>
+            Title
+            <input type="text" id="edit-title" required />
+          </label>
+          <label>
+            Description
+            <textarea id="edit-description" rows="4"></textarea>
+          </label>
+          <label>
+            Status
+            <select id="edit-status">
+              <option value="pending">Pending</option>
+              <option value="in_progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </label>
+          <button type="submit" class="btn">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

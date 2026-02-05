@@ -19,11 +19,11 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/tasks', taskRoutes);
 
-// Serve frontend
-const frontendPath = path.join(__dirname, '..', 'frontend');
-app.use(express.static(frontendPath));
+// Serve frontend from backend/public (works on Railway root directory)
+const publicPath = path.join(__dirname, 'public');
+app.use(express.static(publicPath));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(frontendPath, 'index.html'));
+  res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 connectDb()
