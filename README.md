@@ -12,7 +12,7 @@ A polished, full‑stack Task Manager with CRUD operations, built using Node.js,
 - `backend/` Express + MongoDB API
 - `frontend/` HTML/CSS/JS client
 
-## Setup Instructions
+## Local Setup
 
 ### 1) Backend
 ```bash
@@ -32,8 +32,23 @@ Run the API server:
 npm run dev
 ```
 
-### 2) Frontend
+### 2) Frontend (local dev)
 Open `frontend/index.html` in your browser.
+
+## Deploy on Render (single service)
+
+1. Push code to GitHub.
+2. Create a new **Web Service** on Render.
+3. Connect your repo.
+4. Set **Root Directory** to `backend`.
+5. Build command: `npm install`
+6. Start command: `npm start`
+7. Add environment variables:
+   - `MONGO_URI` (use your MongoDB connection string)
+   - `MONGO_DB=task_manager`
+8. Deploy.
+
+The Express server will serve the frontend from `/frontend` automatically.
 
 ## API Endpoints
 - `GET /api/tasks` — list tasks
@@ -41,7 +56,3 @@ Open `frontend/index.html` in your browser.
 - `GET /api/tasks/:id` — get task
 - `PUT /api/tasks/:id` — update task
 - `DELETE /api/tasks/:id` — delete task
-
-## Notes
-- Requires a local MongoDB instance running on `localhost:27017`.
-- You can swap MongoDB with another database if desired.

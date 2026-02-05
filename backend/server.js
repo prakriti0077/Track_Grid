@@ -1,4 +1,5 @@
-﻿const express = require('express');
+﻿const path = require('path');
+const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDb = require('./config/db');
@@ -12,11 +13,18 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.json({ message: 'Task API is running' });
 });
 
 app.use('/api/tasks', taskRoutes);
+
+// Serve frontend
+const frontendPath = path.join(__dirname, '..', 'frontend');
+app.use(express.static(frontendPath));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
 
 connectDb()
   .then(() => {
